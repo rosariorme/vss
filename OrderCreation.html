@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>D-Track | VSSTechnology</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>	
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Uniform.js/2.1.2/themes/default/css/uniform.default.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.2.0/less.min.js"></script>
+	<!--Modernizr-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
+	<link href='hover.css' rel='stylesheet' type='text/css'>
+
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			font-family: Raleway;
+			background-image: url("images/fulls/04.jpg");
+			background-size: 100% auto;
+		}
+	</style>
+	
+</head>
+
+<body onload="getUrlData()">
+
+   <div>
+   <input type="image" name="imagebutton" src="dtlogo.png"  align="right" width="5%" height="5%"/>
+	<h1>Welcome To Centralized DeliveryTrack Order Panel</h1><br>
+	<h3 id="name"></h3>
+	<h4 style="color:#B72A2A; font-size: 16px;
+	font-style: Verdana, Tahoma, sans-serif;">Please fill the below details</h4>
+   </div>
+	
+	<form class="form" method="post" action="request_pickup.php">
+		
+		<p class="ordername">
+			<input type="text" name="ordername" id="ordername" placeholder="Order Name" />
+			<label for="name">Order Details</label>
+		</p>
+		
+		<p class="paymentMode">
+			<select name="paymentMode" id="paymentMode" text="Postpaid" value="Postpaid">
+			<option value="Prepaid">Prepaid</option>
+             <option value="Postpaid">Postpaid</option>
+            </select>
+			<label for="email">Payment Mode</label>
+		</p>
+		
+		<p class="address">
+			<textarea name="address"  id="address" placeholder="No 4/364, 3rd cross street"></textarea>
+			<label for="web">Address</label>
+		</p>		
+	
+		<p class="amount">
+			<input type="number" name="amount" id="amount" placeholder="100" />
+			<label for="web">Amount</label>
+		</p>
+		
+		<p class="customernumber">
+			<input type="text" name="customernumber" id="customernumber" placeholder="+91912345678" value="+91"/>
+			<label for="web">Customer Number</label>
+		</p>
+		
+		<p class="postedby">
+			<input type="text" name="postedby" id="postedby" placeholder="John" />
+			<label for="web">Name of the person</label>
+		</p>
+		
+        		
+		<p class="userid">
+			<select name="userid" id="userid"  onchange="getModels()"></select>
+			<label for="web">Select Outlet</label>
+		</p>
+		
+		
+		<p class="restname">
+			<input type="text" name="restname" id="restname" placeholder="Your Restaurant Name" />
+			<label for="web">Resturant Name</label>
+		</p>
+		
+		
+		<p class="latitude">
+			<input type="text" name="latitude" id="latitude" placeholder="Latitude" />
+			<label for="web">Latitude</label>
+		</p>
+		
+		
+		<p class="longitude">
+			<input type="text" name="longitude" id="longitude" placeholder="Longitude" />
+			<label for="web">Longitude</label>
+		</p>
+		
+		
+		<p class="status">
+			<input type="text" name="status" id="status" placeholder="Longitude"  readonly value="Pending" />
+			<label for="web">Status</label>
+		</p>
+		
+		<p class="area">
+			<input type="text" name="area" id="area" placeholder="Okhla" />
+			<label for="web">Area</label>
+		</p>
+		
+		
+		<p class="city">
+			<input type="text" name="city" id="city" placeholder="City" />
+			<label for="web">City</label>
+		</p>
+		
+		<p class="pincode">
+			<input type="text" name="pincode" id="pincode" placeholder="11100045" />
+			<label for="web">Pincode</label>
+		</p>
+		
+		<?php
+        echo $restIds;
+        ?>
+		
+		
+		<p class="submit">
+			<input type="submit" value="Submit" />
+		</p>
+	</form>
+	
+	
+	    <p align="center" style="color:#B72A2A; font-family: courier;font-size: 120%;">Copyright@2016 VSS Tech Solutions Pvt Ltd. All rights reserved.</p>
+	 <script type="text/javascript">
+       function getParameter(paramName) {
+                var searchString = window.location.search.substring(1), i, val, params = searchString.split("&");
+
+                for ( i = 0; i < params.length; i++) {
+                    val = params[i].split("=");
+                    if (val[0] == paramName) {
+                        return val[1];
+                    }
+                }
+                return null;
+            }
+
+            function getUrlData() {
+                 outlet = getParameter("id");
+                 var name = getParameter("name");
+                $('#name').html("Welcome " +decodeURI(name));
+               //alert("test");
+               }  
+              
+              
+              $(document).ready(function(){  
+                   //Error happens here, $ is not defined.
+                  var select = document.getElementById("userid");
+                 var  outlet = getParameter("id");
+                   $.ajax({
+                type: "POST",
+                url: "get_rest_outlet.php", //Your required php page
+                data: "outletId="+ outlet, //pass your required data here
+                 dataType: 'json',
+                success: function(data){
+                $.each(data, function() { 
+                $.each(this, function(key, value){
+                    //alert(key + " --> " + value); 
+                    console.log(key + value);
+                    var option = document.createElement('option');
+                    option.text = value;
+                    option.value = key;
+                    select.add(option, 0);
+
+                });
+            });
+           }        
+          });
+          });
+         
+
+     function getModels(){
+       // var carTypeId = $(obj).attr('value');
+       
+        var x = document.getElementById("userid").value;
+       // alert(x);
+
+        $.ajax({
+            type: "POST",
+            url: "get_rest_details.php",
+            data: "restid="+x,
+            dataType:'json',
+            success: function(msg){
+            console.log(msg);    
+                document.getElementById("area").value = msg.area;
+                document.getElementById("address").value = msg.address;
+                document.getElementById("city").value = msg.city;
+                document.getElementById("pincode").value = msg.pincode;
+                document.getElementById("latitude").value = msg.lat;
+                document.getElementById("longitude").value = msg.lon;
+                document.getElementById("restname").value= msg.restName;
+
+
+            }
+            
+        });
+        }
+         
+
+      
+    </script>
+    
+    
+    
+
+
+</body>
+
+</html>

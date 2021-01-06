@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Welcome to Delivery Track Web Order Page</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>	
+	<meta charset="utf-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Uniform.js/2.1.2/themes/default/css/uniform.default.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.2.0/less.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+	
+	<!--Modernizr-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
+	<link href='assets/css/hover.css' rel='stylesheet' type='text/css'>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			font-family: Raleway;
+			/* background-image: url("images/best-indian-food-new-orleans.jpg"); Indian Food */
+			/* background-image: url("images/tea.jpg"); Tea Chains */
+			/* background-image: url("images/hamburguesa.jpg"); Hamburguer Chains */
+			background-image: url("images/lebanese.jpg"); /* Japanese Cuisine */
+			background-size: 100% 1060px;
+		}
+		.envolvedor {
+			/*background-color: rgba(0,53,29,0.8);*/
+			/*background-image: url("images/fulls/12.jpg");
+			background-size:100% 100%;*/
+			background: rgba(41,154,11,0.8);
+			background: -moz-linear-gradient(top,  rgba(0,0,0,0.8) 0%, rgba(0,36,0,0.8) 100%);
+			background: -webkit-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,36,0,0.8) 100%);
+			background: linear-gradient(to bottom,  rgba(0,0,0,0.8) 0%,rgba(0,36,0,0.8) 100%);
+
+			border:solid 1px #fff;
+			width:70%;
+			height:100%;
+			position:absolute;
+			top:75px;
+			left:13%;
+			text-align:center;
+			box-shadow: 1px 1px 10px #000;
+		}
+		input {
+			background-color: rgba(0,0,0,0.4);
+			border: solid 1px #fff;
+			padding: 10px;
+			color:#fff;
+			font-family: Raleway;
+			font-size:16px;
+			border-radius:7px;
+			width:20%;
+			margin-top:10px;
+			margin-bottom:10px;
+		}
+		select {
+			background-color: rgba(0,0,0,0.4);
+			border: solid 1px #fff;
+			padding: 10px;
+			color:#fff;
+			font-family: Raleway;
+			font-size:16px;
+			border-radius:7px;
+			width:20%;
+			margin-top:10px;
+		}
+		input:hover {
+			box-shadow: 1px 1px 10px #fff;
+		}
+		button {
+			background-color: transparent;
+			border: solid 1px #fff;
+			padding: 10px;
+			color:#fff;
+			width:20%;
+			cursor:pointer;
+			font-size:16px;
+		}
+		.miclase {
+			color:#fff;font-size:16px;font-weight:100;margin-left:20px;
+		}
+		.table {
+			background-color:rgba(0,0,0,0.8);
+			font-size:16px;
+			color:#fff;
+			width:80%;
+		}
+		.table tbody tr:hover {
+			color:#333;
+		}
+		table tbody tr:hover {
+			color:#333;
+		}
+		.menu_top {
+			height:60px;
+			width:100%;
+			/*background-color:#fffa81;*/
+			/*background-image:url("images/fulls/44.jpg");
+			background-size:100% auto;*/
+			background:transparent;
+			border-bottom:solid 1px #fff;
+			box-shadow: 1px 1px 10px #000;
+		}
+		h2 {
+		color:#fff;
+		font-family:Raleway;
+		font-weight:200;
+		font-size:26px;
+		/*text-transform: uppercase;*/
+		padding:0;
+		margin:0;
+	}
+	h3 {
+		color:#fff;
+		font-family: Times, Times New Roman, Georgia, serif;
+		font-size:19px;
+		font-style:italic;
+		padding:0;
+		margin:0;
+		margin-bottom:20px;
+	}
+	</style>
+	<script>
+	$(document).ready(function(){  
+		$(".envolvedor").css("height",$(document).height());
+	});
+	</script>
+</head>
+
+<body onload="getUrlData()">
+<div id="menu_top" class="menu_top">
+<img src="dtlogo.png" width="50px" style="margin-left:5px;margin-top:3px;box-shadow: 1px 1px 10px #fff;" />
+<div align="right" style="position:absolute;right:0;top:0;"><img src="mcdonald.png" width="67px" style="margin-left:5px;margin-top:3px;box-shadow: 1px 1px 10px #fff;" /></div>
+</div>
+<div class="envolvedor" align="center">
+   <div class="miclase">
+   <!--<input type="image" name="imagebutton" src="dtlogo.png"  align="right" width="5%" height="5%"/>-->
+   <!--<img src="dtlogo.png" width="300px" style="margin-top:40px;margin-bottom:40px;" />-->
+	<center>
+	<!--<h1 style="color:#fff;font-weight:normal;padding-top:20px;padding-bottom:0;margin-bottom:0;">Welcome to Delivery Track Web Order Page</h1>-->
+	<h2 style="margin-top:40px;">Welcome To DeliveryTrack</h2>
+	<h3 style="margin-top:7px;">Web Order Panel</br/>
+	<hr style="border-color:#fff;width:50px;margin-top:20px;" color="#fff"/>
+	</center>
+   </div>
+	<form class="miclase" method="post" action="test_request_pickup.php">
+		<p>
+		<center>
+		<h4 style="color:#fff;font-size:16px;font-weight:100;margin-top:40px;">Please fill the below details:</h4>
+		<input type="text" name="ordername" id="ordername" placeholder="Order Id" />
+		<input type="number" name="amount" id="amount" placeholder="Amount $" />
+		<select id="">
+			<option value="">Postpaid</option>
+			<option value="">Prepaid</option>
+		</select>
+		<input type="text" name="" id="" placeholder="Mobile No" />
+		<input type="hidden" name="paymentMode" id="paymentMode" value="PostPaid" />
+		<input type="hidden" name="address" id="address" />
+		<input type="hidden" name="customernumber" id="customernumber" />
+		<input type="hidden" name="postedby" id="postedby" value="McDonald" />
+		<input type="hidden" name="userid" id="userid" />
+		<input type="hidden" name="restname" id="restname" />
+		<input type="hidden" name="latitude" id="latitude" />
+		<input type="hidden" name="longitude" id="longitude" />
+		<input type="hidden" name="status" id="status" value="Pending" />
+		<input type="hidden" name="area" id="area" />
+		<input type="hidden" name="city" id="city" />
+		<center><button type="button" id="submit" value="RequestPickup" class="hvr-bounce-to-bottom">Send Information</button></center>
+		<label id="text" style="color:#fff; font-size: 20px;
+	font-style: Verdana, Tahoma, sans-serif;">No delivery agents nearby. Please check after sometime.</label>
+		</center>
+		</p>
+	</form>
+
+	 <div id="nearby" align="center">
+     <center><h3 style="color:#fff;font-weight:normal;">Who is near my branch?</h3></center>
+                <table id="nearbytable"  class="table table-hover">
+                    <thead style="font-weight:bold;">
+						<tr>
+							<td>#</td>
+                            <td>Agent Id</td>
+                            <td>Agent Name</td>
+                            <td>Agent Mobile No</td>
+                       
+                        </tr>
+					</thead>
+					<tbody>
+					<tr>
+					  <th scope="row">1</th>
+					  <td>Mark</td>
+					  <td>Otto</td>
+					  <td>@mdo</td>
+					</tr>
+					<tr>
+					  <th scope="row">2</th>
+					  <td>Jacob</td>
+					  <td>Thornton</td>
+					  <td>@fat</td>
+					</tr>
+					<tr>
+					  <th scope="row">3</th>
+					  <td>Larry</td>
+					  <td>the Bird</td>
+					  <td>@twitter</td>
+					</tr>
+				  </tbody>
+                </table>
+        </div>
+
+        <div id="pending" align="center">
+				<center><h3 style="color:#fff;font-weight:normal;padding-top:20px;">Orders Pending PickUp</h3></center>
+                <table id="pendingtable"  class="table table-hover">
+                    <thead style="font-weight:bold;">
+						<tr>
+                            <td>Mac Order Id</td>
+                            <td>Agent Name</td>
+                            <td>Agent Mob No</td>
+                            <td>Current Status</td>
+                        </tr>
+					</thead>
+				<tbody>
+					<tr>
+					  <th scope="row">1</th>
+					  <td>Mark</td>
+					  <td>Otto</td>
+					  <td>@mdo</td>
+					</tr>
+					<tr>
+					  <th scope="row">2</th>
+					  <td>Jacob</td>
+					  <td>Thornton</td>
+					  <td>@fat</td>
+					</tr>
+					<tr>
+					  <th scope="row">3</th>
+					  <td>Larry</td>
+					  <td>the Bird</td>
+					  <td>@twitter</td>
+					</tr>
+				  </tbody>
+                </table>
+				
+        </div>
+	<center> <p align="center" style="color:#fff;margin-top:40px;margin-bottom:20px;">Copyright@2016 VSS Tech Solutions Pvt Ltd. All rights reserved.</p></center>
+</div> <!-- Fin Envolvedor -->
+	   
+		 <script type="text/javascript">
+                            function getParameter(paramName) {
+                var searchString = window.location.search.substring(1), i, val, params = searchString.split("&");
+
+                for ( i = 0; i < params.length; i++) {
+                    val = params[i].split("=");
+                    if (val[0] == paramName) {
+                        return val[1];
+                    }
+                }
+                return null;
+            }
+
+            function getUrlData() {
+                 outlet = getParameter("id");
+                 var name = getParameter("name");
+                 $('#name').html("Welcome " +decodeURI(name));
+                  document.getElementById("userid").value = outlet;
+                  //document.getElementById("submit").style.visibility = "hidden";
+                  document.getElementById("text").style.visibility = "hidden";
+
+
+              
+               }  
+               
+   
+              
+              
+              $(document).ready(function(){  
+                var  outlet = getParameter("id");
+                $.ajax({
+                type: "POST",
+                url: "test_get_rest_details.php",
+                data: "restid="+outlet,
+                dataType:'json',
+                success: function(msg){
+                console.log(msg);    
+                document.getElementById("area").value = msg.area;
+                document.getElementById("address").value = msg.address;
+                document.getElementById("city").value = msg.city;
+                document.getElementById("pincode").value = msg.pincode;
+                document.getElementById("latitude").value = msg.lat;
+                document.getElementById("longitude").value = msg.lon;
+                document.getElementById("restname").value= msg.restName;
+              }
+            
+        });
+            
+            
+             var xhr;
+
+            var fn = function(){
+           if(xhr && xhr.readyState != 4){
+            xhr.abort();
+            }
+            
+            
+             var  outlet = getParameter("id");
+            var latitude = document.getElementById("latitude").value;
+             var longitude =   document.getElementById("longitude").value;
+           xhr =  $.ajax({
+                type: "POST",
+                url: "test_get_accepted_orders.php", //Your required php page
+                data: "latitude="+ latitude + "&longitude="+ longitude, //pass your required data here
+                dataType: 'json',
+                success: function(data){
+                console.log(data);
+                var tr;
+                if(data.length>0){
+                  document.getElementById("submit").style.visibility = "visible";
+                  document.getElementById("text").style.visibility = "hidden";
+                  }else{
+                   document.getElementById("submit").style.visibility = "hidden";
+                  document.getElementById("text").style.visibility = "visible";
+                  }
+                
+                //  alert(data.length);
+                var table = document.getElementById("nearbytable");
+                for(var i = table.rows.length - 1; i > 0; i--)
+                 {
+                  table.deleteRow(i);
+                 }
+                for (var j = 0; j < data.length; j++) {
+                var tableRef = document.getElementById('nearbytable');
+                var rowCount = tableRef.rows.length;
+                var row = tableRef.insertRow(rowCount);
+
+// Insert a row in the table at the last row
+                
+// Insert a cell in the row at index 0
+                var newCell0  = row.insertCell(0);
+                var newCell1  = row.insertCell(1);
+                var newCell2  = row.insertCell(2); 
+                
+// Append a text node to the cell
+                newCell0.innerHTML = data[j].agentId;
+                newCell1.innerHTML = data[j].agentname;
+                newCell2.innerHTML = data[j].contactno;
+               }
+               
+               
+           }        
+          });
+          }
+          var interval = 100 * 60;// where X is your every X minutes
+                       setInterval(fn, interval);
+                       
+                       
+               var xhy;
+
+            var fn1 = function(){
+           if(xhy && xhy.readyState != 4){
+            xhy.abort();
+            }          
+ 
+               var  outlet = getParameter("id");
+           xhy =  $.ajax({
+                type: "POST",
+                url: "test_get_pending_orders.php", //Your required php page
+                data: "userid="+ outlet, //pass your required data here
+                dataType: 'json',
+                success: function(data){
+                 console.log(data);
+                var table = document.getElementById("pendingtable");
+          for(var k = table.rows.length - 1; k > 0; k--)
+           {
+           table.deleteRow(k);
+           }
+                var tr;
+                for (var l = 0; l < data.length; l++) {
+                var tableRef = document.getElementById('pendingtable');
+                var rowCount = tableRef.rows.length;
+                var row = tableRef.insertRow(rowCount);
+
+       // Insert a row in the table at the last row
+                
+// Insert a cell in the row at index 0
+                var newCell0  = row.insertCell(0);
+                var newCell1  = row.insertCell(1);
+                var newCell2  = row.insertCell(2);
+                var newCell3  = row.insertCell(3);  
+// Append a text node to the cell
+                newCell0.innerHTML = data[l].order;
+                newCell1.innerHTML = data[l].agentname;
+                newCell2.innerHTML = data[l].contactno;
+                newCell3.innerHTML = data[l].status;
+                
+               }
+
+           } 
+          });
+          }
+           var interval1 = 100 * 60;// where X is your every X minutes
+
+           setInterval(fn1, interval1);
+                 
+          
+        });
+
+      
+      
+
+
+      
+      
+    </script>
+    
+    
+    
+
+
+</body>
+
+</html>
